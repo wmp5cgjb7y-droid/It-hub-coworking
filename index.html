@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IT-Hub Coworking</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f172a;--panel:#1e293b;--panel2:#162033;--line:#334155;--text:#f8fafc;--mut:#94a3b8;--acc:#10b981;--acc2:#34d399;--on:#06281d;--hero:linear-gradient(rgba(15,23,42,.8),rgba(15,23,42,.95)),repeating-linear-gradient(90deg,#1e293b 0 2px,#0f172a 2px 60px);--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--sans:"Inter",system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme=light]{--bg:#f1f5f9;--panel:#fff;--panel2:#e8eef5;--line:#cbd5e1;--text:#0f172a;--mut:#475569;--acc:#059669;--acc2:#047857;--on:#fff;--hero:linear-gradient(rgba(241,245,249,.85),rgba(241,245,249,.98)),repeating-linear-gradient(90deg,#e2e8f0 0 2px,#f1f5f9 2px 60px)}
+:root[data-theme=cyber]{--bg:#0a0014;--panel:#1a0b2e;--panel2:#13072a;--line:#4c1d95;--text:#f5f3ff;--mut:#c4b5fd;--acc:#ec4899;--acc2:#22d3ee;--on:#1a0020;--hero:linear-gradient(rgba(10,0,20,.8),rgba(10,0,20,.96)),repeating-linear-gradient(90deg,#2a0f4d 0 2px,#0a0014 2px 60px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 var(--sans);transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--panel);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:14px;font:700 22px var(--mono)}
+.logo i{font-style:normal;background:var(--acc);color:var(--on);width:44px;height:44px;border-radius:12px;display:grid;place-items:center}
+.logo b{color:var(--acc)}
+nav{display:flex;gap:28px;font-weight:500;color:var(--mut)}
+nav a:hover{color:var(--acc)}
+#burger{display:none;background:none;border:0;color:var(--mut);cursor:pointer;padding:8px}
+@media(max-width:820px){#burger{display:block}nav{display:none;position:absolute;top:76px;left:0;right:0;background:var(--panel);flex-direction:column;gap:0;border-bottom:1px solid var(--line)}nav.open{display:flex}nav a{padding:16px 24px;border-top:1px solid var(--line)}}
+.hero{background:var(--hero);text-align:center;padding:96px 0 72px}
+.pill{display:inline-block;border:1px solid var(--line);background:var(--panel);color:var(--acc);font:700 13px var(--mono);letter-spacing:.08em;padding:12px 22px;border-radius:99px}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);line-height:1.08;margin:28px auto 20px;font-weight:800;letter-spacing:-.02em;max-width:14ch}
+h1 span{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);max-width:60ch;margin:0 auto 36px;font-size:1.15rem}
+.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:18px 34px;border-radius:14px;font:700 17px var(--sans);cursor:pointer;border:1.5px solid var(--acc);background:var(--acc);color:var(--on);transition:transform .15s,filter .15s}
+.btn:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn.out{background:transparent;color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:3px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:72px;text-align:center}
+.stats b{display:block;font:700 2.2rem var(--mono);color:var(--acc)}
+.stats small{color:var(--mut);letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}}
+section.s{padding:96px 0}
+.eyebrow{color:var(--acc);font:700 13px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+h2{font-size:clamp(1.9rem,4.5vw,2.9rem);line-height:1.15;margin:12px 0 14px;font-weight:800;letter-spacing:-.01em}
+.sub{color:var(--mut);max-width:58ch}
+.center{text-align:center}.center .sub{margin:0 auto}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+@media(max-width:900px){.plans{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:32px;position:relative;display:flex;flex-direction:column}
+.card.pop{border:2px solid var(--acc)}
+.tag{position:absolute;top:-15px;right:28px;background:var(--acc);color:var(--on);font:700 13px var(--mono);padding:6px 16px;border-radius:99px}
+.ico{width:60px;height:60px;border-radius:16px;background:var(--panel2);color:var(--acc);display:grid;place-items:center}
+.pop .ico{background:var(--acc);color:var(--on)}
+.card .top{display:flex;justify-content:space-between;align-items:center}
+.kind{font:700 13px var(--mono);letter-spacing:.08em;color:var(--mut)}
+.card h3{font-size:1.9rem;margin:26px 0 4px}
+.card p{color:var(--mut);margin:0}
+.price{font-size:3rem;font-weight:800;margin:24px 0;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.price small{font-size:1rem;font-weight:400;color:var(--mut)}
+.card ul{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:14px;flex:1}
+.card li{display:flex;gap:12px}
+.card li:before{content:"✓";color:var(--acc);font-weight:700}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+@media(max-width:900px){.feats{grid-template-columns:1fr}}
+.feat{display:flex;gap:18px}
+.feat .ico{flex:none;width:54px;height:54px}
+.feat h3{margin:0 0 6px;font-size:1.25rem}.feat p{margin:0;color:var(--mut)}
+.alt{background:var(--panel2);border-block:1px solid var(--line)}
+.loc{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:900px){.loc{grid-template-columns:1fr}}
+.facts{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
+.facts li{display:flex;gap:14px;align-items:center}
+.facts svg{color:var(--acc);flex:none}
+.map{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:48px 24px;text-align:center;min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.map svg{color:var(--acc)}
+.map h3{margin:10px 0 0;font-size:1.5rem}.map p{margin:0;color:var(--mut)}
+.gps{margin-top:14px;font:500 15px var(--mono);color:var(--acc);border:1px solid var(--acc);border-radius:12px;padding:12px 22px;background:var(--panel2)}
+.ev-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:12px}
+.ev-head a{color:var(--acc);font:700 15px var(--mono)}
+.events{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+@media(max-width:800px){.events{grid-template-columns:1fr}}
+.ev{display:flex;gap:24px;background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:28px}
+.date{flex:none;width:80px;height:100px;border-radius:16px;background:var(--panel2);display:grid;place-items:center;text-align:center;color:var(--acc);font:700 2.4rem/1 var(--mono)}
+.date small{display:block;font-size:.95rem;font-weight:500;margin-top:6px}
+.ev h3{margin:0 0 8px;font-size:1.35rem}.ev p{margin:0;color:var(--mut)}
+.form{max-width:620px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:44px 36px}
+label{display:block;font:700 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin:24px 0 10px}
+label i{color:var(--acc);font-style:normal}
+input,select{width:100%;padding:17px 20px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:400 16px var(--sans)}
+input::placeholder{color:var(--mut)}
+.form .btn{width:100%;margin-top:32px}
+#ok{display:none;margin-top:24px;padding:18px 20px;border:1px solid var(--acc);border-radius:14px;color:var(--acc);background:var(--panel2)}
+footer{background:var(--panel);border-top:1px solid var(--line);padding:64px 0 40px}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:40px}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr}.fg>:first-child,.fg>:last-child{grid-column:1/-1}}
+footer h4{font:700 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin:0 0 18px}
+footer a{display:block;color:var(--mut);padding:5px 0}footer a:hover{color:var(--acc)}
+footer p{color:var(--mut);max-width:42ch}
+.themes{display:flex;border:1px solid var(--line);border-radius:14px;padding:4px;background:var(--bg);margin-top:14px}
+.themes button{flex:1;padding:11px 6px;border:0;border-radius:10px;background:none;color:var(--text);font:500 15px var(--sans);cursor:pointer}
+.themes button[aria-pressed=true]{background:var(--line)}
+.copy{margin-top:48px;color:var(--mut);font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+<a class="logo" href="#top"><i>IT</i><span>IT-HUB<b>.COWORKING</b></span></a>
+<button id="burger" aria-label="Menu" aria-expanded="false"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<nav id="nav"><a href="#plans">Plans</a><a href="#infra">Infrastructure</a><a href="#location">Location</a><a href="#events">Events</a><a href="#book">Book</a></nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+<span class="pill">HIGH-PERFORMANCE TECH HUB &amp; COMMUNITY</span>
+<h1>Space for Productive Work <span>24/7</span></h1>
+<p class="lead">Designed for software engineers, IT teams, and digital nomads. Gigabit fiber, ergonomic Herman Miller chairs, backup generator power, and 24/7 biometric access.</p>
+<div class="btns"><a class="btn" href="#location">Select location</a><a class="btn ghost" href="#plans">View tariff plans</a></div>
+<div class="stats">
+<div><b>1 Gbps</b><small>Symmetrical fiber</small></div>
+<div><b>24/7/365</b><small>Uninterrupted access</small></div>
+<div><b>100%</b><small>Power uptime guarantee</small></div>
+<div><b>12+</b><small>Soundproof Zoom pods</small></div>
+</div></div></div>
+
+<section class="s" id="plans"><div class="wrap">
+<div class="center"><span class="eyebrow">Flexible memberships</span><h2>Tailored workspaces for IT talent</h2><p class="sub">Choose a plan that fits your workflow — from individual hot desking to dedicated private suites for growing dev teams.</p></div>
+<div class="plans">
+<div class="card"><div class="top"><div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20M10 8l-2 2 2 2M14 8l2 2-2 2"/></svg></div><span class="kind">FLEXIBLE</span></div>
+<h3>Hot Desk</h3><p>Ideal for freelancers and remote contractors needing flexible seating.</p>
+<div class="price">$199 <small>/ month</small></div>
+<ul><li>Access to any free desk 24/7</li><li>High-speed WiFi &amp; Ethernet ports</li><li>Unlimited specialty coffee &amp; tea</li></ul>
+<a class="btn out" href="#book" data-zone="Hot Desk">Reserve hot desk</a></div>
+
+<div class="card pop"><span class="tag">MOST POPULAR</span><div class="top"><div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M9 20h6M12 16v4"/></svg></div><span class="kind" style="background:var(--panel2);color:var(--acc);padding:8px 18px;border-radius:99px">DEDICATED</span></div>
+<h3>Fixed Desk</h3><p>Your personal reserved desk equipped with dual 27" 4K monitors.</p>
+<div class="price">$349 <small>/ month</small></div>
+<ul><li>Dedicated desk &amp; ergonomic chair</li><li>Pre-installed dual 4K monitors</li><li>Lockable pedestal drawer storage</li><li>15 hours/mo meeting room credits</li><li>Mail &amp; package handling</li></ul>
+<a class="btn" href="#book" data-zone="Fixed Desk">Reserve fixed desk</a></div>
+
+<div class="card"><div class="top"><div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M16 5a3 3 0 010 6M18 14c2 .7 3 2.6 3 6"/></svg></div><span class="kind">PRIVATE SUITE</span></div>
+<h3>Team Office</h3><p>Fully furnished private acoustic office for teams of 4 to 20 engineers.</p>
+<div class="price">$1,299 <small>/ month</small></div>
+<ul><li>Lockable private office space</li><li>Dedicated VLAN &amp; static public IP</li><li>Unlimited meeting room usage</li><li>Custom branding on glass wall</li></ul>
+<a class="btn out" href="#book" data-zone="Team Office">Book team office</a></div>
+</div></div></section>
+
+<section class="s alt" id="infra"><div class="wrap">
+<div class="center"><h2>Infrastructure built for tech professionals</h2><p class="sub">Every feature optimized for high concentration and seamless collaboration.</p></div>
+<div class="feats">
+<div class="feat"><div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 9a15 15 0 0120 0M5.5 12.5a10 10 0 0113 0M9 16a5 5 0 016 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></svg></div><div><h3>Redundant internet</h3><p>Dual independent ISP fiber lines with automatic failover in 2 ms.</p></div></div>
+<div class="feat"><div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div><div><h3>Backup generators</h3><p>100% industrial UPS and diesel generator power supply backup system.</p></div></div>
+<div class="feat"><div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/><path d="M19 20c0 1.5-2 2-5 2"/></svg></div><div><h3>Acoustic call pods</h3><p>Soundproof individual booths designed for uninterrupted video calls.</p></div></div>
+</div></div></section>
+
+<section class="s" id="location"><div class="wrap loc">
+<div><span class="eyebrow">Prime location</span><h2>Situated at the heart of the IT ecosystem</h2>
+<p class="sub">Located in the central tech district, surrounded by top tech hubs, universities, coffee shops, and metro access within 2 minutes walk.</p>
+<ul class="facts">
+<li><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 119.5 9 2.500 2.500 0 0112 11.500z"/></svg>Abay Avenue 150/2, Tech Tower Center</li>
+<li><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a3 3 0 013 3v10a3 3 0 01-2 2.800L20 21h-2l-1-2H7l-1 2H4l1-3.200A3 3 0 013 15V5a3 3 0 013-3zm0 4v5h5V6zm7 0v5h5V6z"/></svg>150 m from Central Metro Station</li>
+<li><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm4 4v10h2v-3h2.500a3.500 3.500 0 000-7zm2 2h2.500a1.500 1.500 0 010 3H11z"/></svg>Underground 2-level resident parking</li></ul></div>
+<div class="map"><svg width="84" height="84" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.500a4.500 4.500 0 00-4.500 4.500c0 3 4.500 7.500 4.500 7.500S16.500 9 16.500 6A4.500 4.500 0 0012 1.500zm0 6.200A1.700 1.700 0 1113.700 6 1.700 1.700 0 0112 7.700zM2 8l4-1.500v13L2 21zm5 11.500v-13L11 9v13zm6 2.500v-6.500L17 15v7zm5-1.500V9l4-1.500V20z"/></svg>
+<h3>Interactive GPS map location</h3><p>Almaty Tech District, Abay Ave 150/2</p>
+<a class="gps" href="https://www.google.com/maps?q=43.238941,76.889712" target="_blank" rel="noopener">GPS: 43.238941, 76.889712</a></div>
+</div></section>
+
+<section class="s alt" id="events"><div class="wrap">
+<div class="ev-head"><div><h2>Upcoming community events</h2><p class="sub">Networking, hackathons, and tech meetups for residents.</p></div><a href="#book">Weekly schedule →</a></div>
+<div class="events">
+<div class="ev"><div class="date">14<small>NOV</small></div><div><h3>AI &amp; Large Language Models Meetup</h3><p>Speakers from leading AI labs discussing production RAG architectures.</p></div></div>
+<div class="ev"><div class="date">20<small>NOV</small></div><div><h3>DevOps &amp; Cloud Native Hackathon</h3><p>24-hour team hackathon with $5,000 prize pool sponsored by cloud partners.</p></div></div>
+</div></div></section>
+
+<section class="s" id="book"><div class="wrap">
+<div class="form">
+<div class="center"><span class="eyebrow">Reservation portal</span><h2>Book your space / test day</h2><p class="sub">Fill out the form below to schedule your free test day or reserve a meeting room zone.</p></div>
+<form id="f" novalidate>
+<label for="zone">Zone selection <i>*</i></label>
+<select id="zone" required><option value="">Select workspace option…</option><option>Hot Desk</option><option>Fixed Desk</option><option>Team Office</option><option>Meeting Room</option><option>Free Test Day</option></select>
+<label for="dt">Time interval / date <i>*</i></label>
+<input id="dt" type="datetime-local" required>
+<label for="em">Corporate email <i>*</i></label>
+<input id="em" type="email" placeholder="developer@company.com" required>
+<label for="ph">Contact phone <i>*</i></label>
+<input id="ph" type="tel" placeholder="+7 (707) 000-00-00" required>
+<button class="btn" type="submit"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>Confirm reservation request</button>
+<div id="ok" role="status"></div>
+</form></div></div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="fg">
+<div><a class="logo" href="#top" style="padding:0;color:var(--text)"><i>IT</i><span>IT-HUB COWORKING</span></a><p style="margin-top:20px">Premier business-oriented workspace for technology companies, developers, and innovation teams.</p></div>
+<div><h4>Quick navigation</h4><a href="#plans">Tariff matrices</a><a href="#location">Directions &amp; map</a><a href="#infra">Infrastructure specs</a><a href="#events">Resident events</a></div>
+<div><h4>Legal &amp; regulations</h4><a href="#top">Resident regulations</a><a href="#top">Privacy policy</a><a href="#top">Terms of service</a><a href="#top">SLA &amp; network guarantee</a></div>
+<div><h4>System theme switcher</h4><p style="margin:0">Select your preferred UI aesthetic:</p>
+<div class="themes" id="themes"><button data-t="light" aria-pressed="false">☀ Light</button><button data-t="dark" aria-pressed="true">☾ Dark</button><button data-t="cyber" aria-pressed="false">⚡ Cyber</button></div></div>
+</div>
+<div class="copy">© 2026 IT-Hub Coworking. ICT6001 Web Design Project.</div>
+</div></footer>
+
+<script>
+const root=document.documentElement,nav=document.getElementById('nav'),bg=document.getElementById('burger');
+function setTheme(t){root.dataset.theme=t;document.querySelectorAll('#themes button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t));try{localStorage.setItem('ith-theme',t)}catch(e){}}
+try{const s=localStorage.getItem('ith-theme');if(s)setTheme(s)}catch(e){}
+document.getElementById('themes').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setTheme(b.dataset.t)});
+bg.onclick=()=>{const o=nav.classList.toggle('open');bg.setAttribute('aria-expanded',o)};
+nav.addEventListener('click',()=>{nav.classList.remove('open');bg.setAttribute('aria-expanded',false)});
+document.querySelectorAll('[data-zone]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('zone').value=a.dataset.zone}));
+document.getElementById('f').addEventListener('submit',e=>{
+ e.preventDefault();const ok=document.getElementById('ok'),f=e.target;
+ const bad=[...f.querySelectorAll('[required]')].find(x=>!x.value||!x.checkValidity());
+ ok.style.display='block';
+ if(bad){bad.focus();ok.textContent='Fill in all required fields with valid values.';ok.style.color='#f87171';ok.style.borderColor='#f87171';return}
+ ok.style.color='';ok.style.borderColor='';
+ ok.textContent='Request received: '+f.zone.value+'. We will confirm by email at '+f.em.value+'.';f.reset();
+});
+</script>
+</body>
+</html>
